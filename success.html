@@ -22,8 +22,8 @@
     --accent: #a78bfa;
     --accent-light: #c4b5fd;
     --green: #34d399;
-    --gradient: linear-gradient(135deg, #a78bfa 0%, #818cf8 40%, #60a5fa 70%, #34d399 100%);
-    --gradient-text: linear-gradient(135deg, #c4b5fd 0%, #93c5fd 50%, #6ee7b7 100%);
+    --gradient: #a78bfa;
+    --gradient-text: #c4b5fd;
 }
 
 html { font-size: 16px; }
@@ -51,17 +51,14 @@ body::before {
     transform: translateX(-50%);
     width: 1000px;
     height: 700px;
-    background: radial-gradient(ellipse, rgba(52,211,153,0.06) 0%, rgba(167,139,250,0.03) 30%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(167,139,250,0.04) 0%, transparent 70%);
     pointer-events: none;
 }
 
 .container { max-width: 600px; width: 100%; position: relative; }
 
 .gradient-text {
-    background: var(--gradient-text);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--gradient-text);
 }
 
 .success-card {
@@ -115,8 +112,8 @@ h1 { font-size: 32px; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 
     font-weight: 700; font-size: 15px; transition: all 0.25s;
 }
 
-.dl-primary { background: var(--gradient); color: #0a0a10; }
-.dl-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(167,139,250,0.25); }
+.dl-primary { background: var(--accent); color: #0a0a10; }
+.dl-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(167,139,250,0.3); }
 .dl-secondary { background: transparent; border: 1px solid var(--border); color: var(--text); }
 .dl-secondary:hover { border-color: var(--accent); background: rgba(167,139,250,0.05); transform: translateY(-2px); }
 .dl-icon { font-size: 20px; }
@@ -153,7 +150,7 @@ h1 { font-size: 32px; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 
 .blocked-card a.back-link {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 14px 28px; border-radius: 12px;
-    background: var(--gradient); color: #0a0a10;
+    background: var(--accent); color: #0a0a10;
     text-decoration: none; font-weight: 700; font-size: 15px;
     transition: all 0.25s;
 }
