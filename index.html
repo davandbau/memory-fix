@@ -30,8 +30,8 @@
     --accent-glow: rgba(167,139,250,0.15);
     --green: #34d399;
     --blue: #60a5fa;
-    --gradient: linear-gradient(135deg, #a78bfa 0%, #818cf8 40%, #60a5fa 70%, #34d399 100%);
-    --gradient-text: linear-gradient(135deg, #c4b5fd 0%, #93c5fd 50%, #6ee7b7 100%);
+    --gradient: var(--accent);
+    --gradient-text: var(--accent-light);
 }
 
 html { scroll-behavior: smooth; font-size: 16px; }
@@ -64,10 +64,7 @@ body {
 .text-center { text-align: center; }
 
 .gradient-text {
-    background: var(--gradient-text);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--accent-light);
 }
 
 /* Typography */
@@ -268,33 +265,21 @@ section {
     justify-content: center;
     gap: 10px;
     padding: 18px 44px;
-    background: var(--gradient);
+    background: var(--accent);
     color: #0a0a10;
     font-weight: 700;
     font-size: 16px;
     border-radius: 14px;
     text-decoration: none;
     transition: all 0.25s;
-    position: relative;
-    overflow: hidden;
     letter-spacing: 0.01em;
-}
-
-.cta-button::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
-    opacity: 0;
-    transition: opacity 0.25s;
 }
 
 .cta-button:hover {
     transform: translateY(-2px);
+    background: var(--accent-light);
     box-shadow: 0 12px 40px rgba(167,139,250,0.25), 0 4px 12px rgba(167,139,250,0.15);
 }
-
-.cta-button:hover::before { opacity: 1; }
 
 .cta-button-secondary {
     padding: 18px 44px;
@@ -716,7 +701,7 @@ section {
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 2px;
-    background: var(--gradient);
+    background: var(--accent);
 }
 
 .author-meta {
@@ -730,7 +715,7 @@ section {
     width: 56px;
     height: 56px;
     border-radius: 14px;
-    background: var(--gradient);
+    background: var(--accent);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -846,8 +831,8 @@ section {
     top: 0;
     left: 0;
     right: 0;
-    height: 3px;
-    background: var(--gradient);
+    height: 2px;
+    background: var(--accent);
 }
 
 .price-name {
@@ -875,10 +860,7 @@ section {
     font-size: 60px;
     font-weight: 700;
     letter-spacing: -0.04em;
-    background: var(--gradient-text);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--accent-light);
 }
 
 .price-once {
