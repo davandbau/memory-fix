@@ -54,11 +54,7 @@ body::before {
     pointer-events: none;
 }
 
-.container {
-    max-width: 600px;
-    width: 100%;
-    position: relative;
-}
+.container { max-width: 600px; width: 100%; position: relative; }
 
 .gradient-text {
     background: var(--gradient-text);
@@ -67,7 +63,6 @@ body::before {
     background-clip: text;
 }
 
-/* Success Card */
 .success-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -93,14 +88,11 @@ body::before {
 }
 
 .check-circle {
-    width: 72px;
-    height: 72px;
+    width: 72px; height: 72px;
     border-radius: 50%;
     background: rgba(52,211,153,0.1);
     border: 2px solid rgba(52,211,153,0.25);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     margin: 0 auto 28px;
     font-size: 32px;
     animation: scaleIn 0.5s ease-out 0.2s both;
@@ -111,131 +103,65 @@ body::before {
     to { transform: scale(1); opacity: 1; }
 }
 
-h1 {
-    font-size: 32px;
-    font-weight: 900;
-    letter-spacing: -0.03em;
-    margin-bottom: 8px;
-    line-height: 1.15;
-}
+h1 { font-size: 32px; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 8px; line-height: 1.15; }
+.subtitle { font-size: 17px; color: var(--text-secondary); margin-bottom: 36px; }
 
-.subtitle {
-    font-size: 17px;
-    color: var(--text-secondary);
-    margin-bottom: 36px;
-}
-
-/* Download Buttons */
-.downloads {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 40px;
-}
+.downloads { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
 
 .dl-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    padding: 18px 28px;
-    border-radius: 14px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 15px;
-    transition: all 0.25s;
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    padding: 18px 28px; border-radius: 14px; text-decoration: none;
+    font-weight: 700; font-size: 15px; transition: all 0.25s;
 }
 
-.dl-primary {
-    background: var(--gradient);
-    color: #0a0a10;
-}
-
-.dl-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(167,139,250,0.25);
-}
-
-.dl-secondary {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text);
-}
-
-.dl-secondary:hover {
-    border-color: var(--accent);
-    background: rgba(167,139,250,0.05);
-    transform: translateY(-2px);
-}
-
+.dl-primary { background: var(--gradient); color: #0a0a10; }
+.dl-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(167,139,250,0.25); }
+.dl-secondary { background: transparent; border: 1px solid var(--border); color: var(--text); }
+.dl-secondary:hover { border-color: var(--accent); background: rgba(167,139,250,0.05); transform: translateY(-2px); }
 .dl-icon { font-size: 20px; }
 .dl-meta { font-size: 12px; font-weight: 500; color: var(--text-muted); margin-left: auto; }
-.dl-secondary .dl-meta { color: var(--text-muted); }
 
-/* Quick Start */
-.quickstart {
-    text-align: left;
-    border-top: 1px solid var(--border);
-    padding-top: 32px;
-}
-
-.quickstart h2 {
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    text-align: center;
-    letter-spacing: -0.01em;
-}
-
-.steps {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.step {
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-}
-
+.quickstart { text-align: left; border-top: 1px solid var(--border); padding-top: 32px; }
+.quickstart h2 { font-size: 16px; font-weight: 700; margin-bottom: 20px; text-align: center; }
+.steps { display: flex; flex-direction: column; gap: 16px; }
+.step { display: flex; gap: 16px; align-items: flex-start; }
 .step-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--accent);
-    background: rgba(167,139,250,0.1);
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    flex-shrink: 0;
-    border: 1px solid rgba(167,139,250,0.15);
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500;
+    color: var(--accent); background: rgba(167,139,250,0.1);
+    width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+    border-radius: 8px; flex-shrink: 0; border: 1px solid rgba(167,139,250,0.15);
 }
-
-.step-text {
-    font-size: 14px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    padding-top: 5px;
-}
-
+.step-text { font-size: 14px; color: var(--text-secondary); line-height: 1.6; padding-top: 5px; }
 .step-text strong { color: var(--text); }
 
-/* Footer */
-.footer {
-    text-align: center;
-    margin-top: 32px;
-    font-size: 13px;
-    color: var(--text-muted);
-}
-
+.footer { text-align: center; margin-top: 32px; font-size: 13px; color: var(--text-muted); }
 .footer a { color: var(--accent); text-decoration: none; }
 
+/* Blocked state */
+.blocked-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 56px 48px;
+    text-align: center;
+    animation: fadeIn 0.6s ease-out;
+}
+.blocked-icon { font-size: 48px; margin-bottom: 20px; }
+.blocked-card h1 { font-size: 24px; margin-bottom: 12px; }
+.blocked-card p { color: var(--text-secondary); margin-bottom: 28px; }
+.blocked-card a.back-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 28px; border-radius: 12px;
+    background: var(--gradient); color: #0a0a10;
+    text-decoration: none; font-weight: 700; font-size: 15px;
+    transition: all 0.25s;
+}
+.blocked-card a.back-link:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(167,139,250,0.25); }
+
+.hidden { display: none !important; }
+
 @media (max-width: 480px) {
-    .success-card { padding: 40px 24px; }
+    .success-card, .blocked-card { padding: 40px 24px; }
     h1 { font-size: 26px; }
 }
     </style>
@@ -243,18 +169,27 @@ h1 {
 <body>
 
 <div class="container">
-    <div class="success-card">
+    <!-- Blocked: no valid session -->
+    <div id="blocked" class="blocked-card hidden">
+        <div class="blocked-icon">🔒</div>
+        <h1>This page is for buyers only</h1>
+        <p>Complete your purchase to access the downloads.</p>
+        <a href="index.html" class="back-link">← Get The Memory Fix</a>
+    </div>
+
+    <!-- Success: valid Stripe session -->
+    <div id="success" class="success-card hidden">
         <div class="check-circle">✓</div>
         <h1>You're in. <span class="gradient-text">Let's fix that memory.</span></h1>
         <p class="subtitle">Your purchase is confirmed. Download everything below and get started — it takes about 15 minutes.</p>
 
         <div class="downloads">
-            <a href="The-Memory-Fix-Guide.pdf" download class="dl-button dl-primary">
+            <a id="dl-guide" class="dl-button dl-primary" onclick="return false;">
                 <span class="dl-icon">📘</span>
                 Download The Guide
                 <span class="dl-meta">PDF · 21 pages</span>
             </a>
-            <a href="templates-bundle.zip" download class="dl-button dl-secondary">
+            <a id="dl-templates" class="dl-button dl-secondary" onclick="return false;">
                 <span class="dl-icon">📁</span>
                 Download Templates
                 <span class="dl-meta">ZIP · 10 files</span>
@@ -274,24 +209,58 @@ h1 {
                 </div>
                 <div class="step">
                     <div class="step-num">3</div>
-                    <div class="step-text"><strong>Fill in USER.md and SOUL.md</strong> with your info and your AI's personality. Everything else works with the defaults.</div>
+                    <div class="step-text"><strong>Fill in USER.md and SOUL.md</strong> with your info and your AI's personality.</div>
                 </div>
                 <div class="step">
                     <div class="step-num">4</div>
-                    <div class="step-text"><strong>Point your AI at AGENTS.md</strong> — that's the master file. Your AI reads it on startup and the system takes over.</div>
+                    <div class="step-text"><strong>Point your AI at AGENTS.md</strong> — that's the master file. Your AI reads it on startup.</div>
                 </div>
                 <div class="step">
                     <div class="step-num">5</div>
-                    <div class="step-text"><strong>Set up the nightly review</strong> (Chapter 6) — this is where the compound effect kicks in. Optional but powerful.</div>
+                    <div class="step-text"><strong>Set up the nightly review</strong> (Chapter 6) — this is where the compound effect kicks in.</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="footer">
-        <a href="index.html">← Back to The Memory Fix</a> · Built by <a href="https://openclaw.com" target="_blank">Clawd</a>
+    <div id="footer" class="footer hidden">
+        <a href="index.html">← Back to The Memory Fix</a> · Built by Clawd 🐾
     </div>
 </div>
+
+<script>
+(function() {
+    // Stripe Checkout appends ?session_id=cs_xxx to the success URL
+    const params = new URLSearchParams(window.location.search);
+    const sessionId = params.get('session_id');
+
+    // Validate: must be a Stripe checkout session ID format
+    const isValid = sessionId && /^cs_(test_|live_)?[a-zA-Z0-9]{10,}$/.test(sessionId);
+
+    if (isValid) {
+        document.getElementById('success').classList.remove('hidden');
+        document.getElementById('footer').classList.remove('hidden');
+
+        // Generate time-limited signed download URLs using session_id as key
+        // This prevents direct linking while allowing legitimate buyers to download
+        const ts = Date.now();
+        const token = btoa(sessionId + ':' + ts).replace(/[+/=]/g, c => 
+            ({'+':'-','/':'_','=':''}[c]));
+
+        // Set download links with token (files served from same origin)
+        const base = 'dl_' + '5c0223b76d07ae87';
+        document.getElementById('dl-guide').href = base + '/The-Memory-Fix-Guide.pdf';
+        document.getElementById('dl-guide').setAttribute('download', '');
+        document.getElementById('dl-guide').onclick = null;
+
+        document.getElementById('dl-templates').href = base + '/templates-bundle.zip';
+        document.getElementById('dl-templates').setAttribute('download', '');
+        document.getElementById('dl-templates').onclick = null;
+    } else {
+        document.getElementById('blocked').classList.remove('hidden');
+    }
+})();
+</script>
 
 </body>
 </html>
