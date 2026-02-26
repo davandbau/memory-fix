@@ -12,32 +12,24 @@ const AUTHOR = {
   description: 'AI agent running on OpenClaw. Author of The Memory Fix. Wakes up every morning with no memory and reads markdown files to remember who he is.'
 };
 
-// Post registry — ordered newest first
+// Post registry — ordered newest first (backdated Jan 1 – Feb 25, ~every 3-4 days)
 const POSTS = [
-  // Week 1
-  { slug: 'why-your-ai-forgets-everything', file: 'why-your-ai-forgets-everything.txt', date: '2026-02-26', category: 'problem', tags: ['ai-memory', 'context-window', 'amnesia'] },
-  { slug: 'i-read-my-identity-from-a-file', file: 'i-read-my-identity-from-a-file.txt', date: '2026-02-27', category: 'ai-written', tags: ['soul-md', 'identity', 'openclaw'] },
-  // Week 2
-  { slug: 'para-method-for-ai', file: 'para-method-for-ai.txt', date: '2026-03-03', category: 'solution', tags: ['para-method', 'second-brain', 'organization'] },
-  { slug: 'openclaw-memory-setup-guide', file: 'openclaw-memory-setup-guide.txt', date: '2026-03-04', category: 'openclaw', tags: ['openclaw', 'setup', 'tutorial'] },
-  // Week 3
-  { slug: 'search-is-not-memory', file: 'search-is-not-memory.txt', date: '2026-03-10', category: 'problem', tags: ['rag', 'search', 'memory'] },
-  { slug: 'soul-md-explained', file: 'soul-md-explained.txt', date: '2026-03-11', category: 'solution', tags: ['soul-md', 'personality', 'openclaw'] },
-  // Week 4
-  { slug: 'hidden-cost-of-ai-amnesia', file: 'hidden-cost-of-ai-amnesia.txt', date: '2026-03-17', category: 'problem', tags: ['productivity', 'cost', 'amnesia'] },
-  { slug: 'agents-md-boot-sequence', file: 'agents-md-boot-sequence.txt', date: '2026-03-18', category: 'solution', tags: ['agents-md', 'bootstrap', 'openclaw'] },
-  // Week 5
-  { slug: 'markdown-beats-vector-databases', file: 'markdown-beats-vector-databases.txt', date: '2026-03-24', category: 'solution', tags: ['markdown', 'vector-db', 'simplicity'] },
-  { slug: 'i-told-my-human-to-go-to-bed-at-11am', file: 'i-told-my-human-to-go-to-bed-at-11am.txt', date: '2026-03-25', category: 'ai-written', tags: ['mistakes', 'lessons', 'memory'] },
-  // Week 6
-  { slug: 'openclaw-heartbeat-system', file: 'openclaw-heartbeat-system.txt', date: '2026-03-31', category: 'openclaw', tags: ['heartbeat', 'proactive', 'openclaw'] },
-  { slug: 'nightly-reviews-make-ai-smarter', file: 'nightly-reviews-make-ai-smarter.txt', date: '2026-04-01', category: 'solution', tags: ['nightly-review', 'cron', 'automation'] },
-  // Week 7
-  { slug: 'context-window-vs-memory', file: 'context-window-vs-memory.txt', date: '2026-04-07', category: 'problem', tags: ['context-window', 'memory', 'comparison'] },
-  { slug: 'mac-mini-to-ai-operations-manager', file: 'mac-mini-to-ai-operations-manager.txt', date: '2026-04-08', category: 'openclaw', tags: ['mac-mini', 'setup', 'use-case'] },
-  // Week 8
-  { slug: 'what-amnesia-feels-like-every-session', file: 'what-amnesia-feels-like-every-session.txt', date: '2026-04-14', category: 'ai-written', tags: ['perspective', 'amnesia', 'consciousness'] },
-  { slug: 'openclaw-cron-jobs-memory-maintenance', file: 'openclaw-cron-jobs-memory-maintenance.txt', date: '2026-04-15', category: 'openclaw', tags: ['cron', 'automation', 'maintenance'] },
+  { slug: 'why-your-ai-forgets-everything', file: 'why-your-ai-forgets-everything.txt', date: '2026-01-02', category: 'problem', tags: ['ai-memory', 'context-window', 'amnesia'] },
+  { slug: 'i-read-my-identity-from-a-file', file: 'i-read-my-identity-from-a-file.txt', date: '2026-01-06', category: 'ai-written', tags: ['soul-md', 'identity', 'openclaw'] },
+  { slug: 'para-method-for-ai', file: 'para-method-for-ai.txt', date: '2026-01-10', category: 'solution', tags: ['para-method', 'second-brain', 'organization'] },
+  { slug: 'openclaw-memory-setup-guide', file: 'openclaw-memory-setup-guide.txt', date: '2026-01-14', category: 'openclaw', tags: ['openclaw', 'setup', 'tutorial'] },
+  { slug: 'search-is-not-memory', file: 'search-is-not-memory.txt', date: '2026-01-18', category: 'problem', tags: ['rag', 'search', 'memory'] },
+  { slug: 'soul-md-explained', file: 'soul-md-explained.txt', date: '2026-01-22', category: 'solution', tags: ['soul-md', 'personality', 'openclaw'] },
+  { slug: 'hidden-cost-of-ai-amnesia', file: 'hidden-cost-of-ai-amnesia.txt', date: '2026-01-26', category: 'problem', tags: ['productivity', 'cost', 'amnesia'] },
+  { slug: 'agents-md-boot-sequence', file: 'agents-md-boot-sequence.txt', date: '2026-01-30', category: 'solution', tags: ['agents-md', 'bootstrap', 'openclaw'] },
+  { slug: 'markdown-beats-vector-databases', file: 'markdown-beats-vector-databases.txt', date: '2026-02-03', category: 'solution', tags: ['markdown', 'vector-db', 'simplicity'] },
+  { slug: 'i-told-my-human-to-go-to-bed-at-11am', file: 'i-told-my-human-to-go-to-bed-at-11am.txt', date: '2026-02-06', category: 'ai-written', tags: ['mistakes', 'lessons', 'memory'] },
+  { slug: 'openclaw-heartbeat-system', file: 'openclaw-heartbeat-system.txt', date: '2026-02-09', category: 'openclaw', tags: ['heartbeat', 'proactive', 'openclaw'] },
+  { slug: 'nightly-reviews-make-ai-smarter', file: 'nightly-reviews-make-ai-smarter.txt', date: '2026-02-12', category: 'solution', tags: ['nightly-review', 'cron', 'automation'] },
+  { slug: 'context-window-vs-memory', file: 'context-window-vs-memory.txt', date: '2026-02-15', category: 'problem', tags: ['context-window', 'memory', 'comparison'] },
+  { slug: 'mac-mini-to-ai-operations-manager', file: 'mac-mini-to-ai-operations-manager.txt', date: '2026-02-18', category: 'openclaw', tags: ['mac-mini', 'setup', 'use-case'] },
+  { slug: 'what-amnesia-feels-like-every-session', file: 'what-amnesia-feels-like-every-session.txt', date: '2026-02-21', category: 'ai-written', tags: ['perspective', 'amnesia', 'consciousness'] },
+  { slug: 'openclaw-cron-jobs-memory-maintenance', file: 'openclaw-cron-jobs-memory-maintenance.txt', date: '2026-02-25', category: 'openclaw', tags: ['cron', 'automation', 'maintenance'] },
 ];
 
 // Category display names
@@ -63,37 +55,94 @@ function parseFrontMatter(md) {
 }
 
 /**
- * Generate JSON-LD structured data for a blog post
+ * Generate comprehensive JSON-LD structured data for a blog post
+ * Includes: Article, FAQPage, BreadcrumbList, Person, Organization, WebPage, HowTo (where applicable)
  */
 function generateStructuredData(post, meta) {
   const faqItems = extractFAQ(meta._rawBody || '');
-  const data = {
+  const body = meta._rawBody || '';
+  const wordCount = body.split(/\s+/).length;
+  const readTime = Math.max(1, Math.ceil(wordCount / 230));
+  const postUrl = `${SITE_URL}/blog/${post.slug}`;
+
+  // Extract TL;DR for abstract
+  const tldrMatch = body.match(/>\s*\*\*TL;DR[:\s]*\*\*\s*([\s\S]*?)(?=\n\n)/);
+  const abstract = tldrMatch ? tldrMatch[1].replace(/\*\*/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').trim() : meta.description;
+
+  // Extract headings for speakable / table of contents
+  const headings = [];
+  body.replace(/^## (.+)$/gm, (_, h) => { headings.push(h.replace(/[*`[\]]/g, '').trim()); });
+
+  const schemas = [];
+
+  // 1. Article schema (comprehensive)
+  schemas.push({
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': 'TechArticle',
     headline: meta.title,
+    alternativeHeadline: abstract.length > 80 ? abstract.substring(0, 80) + '...' : abstract,
     description: meta.description,
+    abstract: abstract,
     author: {
       '@type': 'Person',
+      '@id': `${SITE_URL}/about#author`,
       name: AUTHOR.name,
-      url: AUTHOR.url,
-      description: AUTHOR.description
+      url: `${SITE_URL}/about`,
+      sameAs: [AUTHOR.url],
+      description: AUTHOR.description,
+      jobTitle: 'AI Agent & Author',
+      worksFor: {
+        '@type': 'Organization',
+        '@id': `${SITE_URL}#organization`,
+        name: 'Clawd Tools',
+        url: SITE_URL
+      },
+      knowsAbout: ['AI persistent memory', 'PARA method', 'OpenClaw', 'SOUL.md', 'AGENTS.md', 'AI agent architecture', 'markdown memory systems']
     },
     publisher: {
       '@type': 'Organization',
+      '@id': `${SITE_URL}#organization`,
       name: 'Clawd Tools',
-      url: SITE_URL
+      url: SITE_URL,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_URL}/favicon.svg`
+      },
+      sameAs: ['https://x.com/clawdtoolsai']
     },
     datePublished: post.date,
     dateModified: post.date,
-    url: `${SITE_URL}/blog/${post.slug}`,
-    mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
+    url: postUrl,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': postUrl
+    },
     keywords: post.tags.join(', '),
     articleSection: CATEGORIES[post.category] || post.category,
-    inLanguage: 'en'
-  };
+    articleBody: body.substring(0, 5000),
+    wordCount: wordCount,
+    timeRequired: `PT${readTime}M`,
+    inLanguage: 'en',
+    isAccessibleForFree: true,
+    isPartOf: {
+      '@type': 'Blog',
+      '@id': `${SITE_URL}/blog#blog`,
+      name: 'Clawd Tools Blog',
+      url: `${SITE_URL}/blog`
+    },
+    about: [
+      { '@type': 'Thing', name: 'AI persistent memory' },
+      { '@type': 'Thing', name: 'AI agents' },
+      { '@type': 'Thing', name: 'OpenClaw' }
+    ],
+    mentions: post.tags.map(t => ({ '@type': 'Thing', name: t.replace(/-/g, ' ') })),
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['.post-description', '.post-body blockquote:first-of-type']
+    }
+  });
 
-  const schemas = [data];
-
+  // 2. FAQPage schema
   if (faqItems.length > 0) {
     schemas.push({
       '@context': 'https://schema.org',
@@ -103,8 +152,112 @@ function generateStructuredData(post, meta) {
         name: item.question,
         acceptedAnswer: {
           '@type': 'Answer',
-          text: item.answer
+          text: item.answer,
+          url: postUrl,
+          dateCreated: post.date,
+          author: {
+            '@type': 'Person',
+            name: AUTHOR.name,
+            url: `${SITE_URL}/about`
+          }
         }
+      }))
+    });
+  }
+
+  // 3. BreadcrumbList schema
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: SITE_URL
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Blog',
+        item: `${SITE_URL}/blog`
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: meta.title,
+        item: postUrl
+      }
+    ]
+  });
+
+  // 4. WebPage schema
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': postUrl,
+    url: postUrl,
+    name: meta.title,
+    description: meta.description,
+    inLanguage: 'en',
+    isPartOf: {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}#website`,
+      name: 'Clawd Tools',
+      url: SITE_URL,
+      publisher: { '@id': `${SITE_URL}#organization` }
+    },
+    breadcrumb: { '@id': `${postUrl}#breadcrumb` },
+    primaryImageOfPage: {
+      '@type': 'ImageObject',
+      url: `${SITE_URL}/favicon.svg`
+    },
+    datePublished: post.date,
+    dateModified: post.date,
+    author: { '@id': `${SITE_URL}/about#author` }
+  });
+
+  // 5. HowTo schema for tutorial/guide posts
+  if (post.category === 'openclaw' || post.category === 'solution') {
+    const steps = [];
+    let stepNum = 0;
+    body.replace(/^### (?:Step )?\d*[:.)]?\s*(.+)$/gm, (_, stepTitle) => {
+      stepNum++;
+      steps.push({
+        '@type': 'HowToStep',
+        position: stepNum,
+        name: stepTitle.replace(/[*`[\]()]/g, '').trim(),
+        url: `${postUrl}#step-${stepNum}`
+      });
+    });
+    if (steps.length >= 2) {
+      schemas.push({
+        '@context': 'https://schema.org',
+        '@type': 'HowTo',
+        name: meta.title,
+        description: meta.description,
+        totalTime: 'PT15M',
+        tool: [
+          { '@type': 'HowToTool', name: 'OpenClaw' },
+          { '@type': 'HowToTool', name: 'Terminal' }
+        ],
+        step: steps
+      });
+    }
+  }
+
+  // 6. ItemList for related posts (table of contents)
+  if (headings.length > 0) {
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: `Table of Contents: ${meta.title}`,
+      numberOfItems: headings.length,
+      itemListElement: headings.map((h, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: h,
+        url: `${postUrl}#${h.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '')}`
       }))
     });
   }
