@@ -1,0 +1,243 @@
+---
+title: "OpenClaw Cron Jobs for Automated Memory Maintenance"
+description: "Cron jobs automate the tedious parts of AI memory: nightly reviews, inbox processing, project health checks, and scheduled tasks. Here's how to set them up in OpenClaw."
+---
+
+> **TL;DR:** OpenClaw cron jobs run AI tasks on a schedule — nightly reviews at 23:00, morning briefings at 08:00, health checks hourly. Each cron job gets its own isolated session with full context. Key crons for memory: nightly review (processes the day), morning briefing (prepares the day), and health monitoring (catches failures). Don't over-cron — batch periodic checks into heartbeats instead.
+
+## What OpenClaw Cron Jobs Are
+
+Cron jobs are scheduled tasks that run automatically. In OpenClaw, each cron job spawns an isolated AI session at the scheduled time, executes the task, and delivers results to a specified channel.
+
+```
+/cron add "0 23 * * *" "Run the nightly memory review..."
+```
+
+This runs every day at 23:00. The AI gets its own session, reads its memory files, does the work, and reports back.
+
+## The Essential Crons for Memory
+
+### 1. Nightly Review (Critical)
+
+```
+Schedule: 0 23 * * * (23:00 daily)
+```
+
+The most important cron job. Fully covered in [How Nightly Reviews Make Your AI Smarter](/blog/nightly-reviews-make-ai-smarter). It:
+
+- Reviews the day's transcript
+- Writes the structured daily note
+- Processes inbox → PARA files
+- Updates project statuses
+- Archives completed work
+- Flags items for tomorrow
+
+**Without this, your memory files go stale within days.**
+
+### 2. Morning Briefing (Optional but Valuable)
+
+```
+Schedule: 0 8 * * 1-5 (08:00 weekdays)
+```
+
+A morning summary delivered to your messaging channel:
+
+- Today's calendar events
+- P1/P2 project statuses and next actions
+- Anything flagged by last night's review
+- Weather if relevant
+
+This replaces the "what are we working on today?" conversation. You get a structured briefing before your first coffee.
+
+### 3. Health Monitor (Recommended)
+
+```
+Schedule: 0 */4 * * * (every 4 hours)
+```
+
+Checks that other cron jobs are running correctly:
+
+- Did the nightly review run last night?
+- Are there consecutive errors on any job?
+- Is the gateway responsive?
+
+Alerts you only if something is broken. Silent otherwise.
+
+## Cron vs Heartbeat: When to Use Which
+
+This is the most common point of confusion:
+
+| Use Cron | Use [Heartbeat](/blog/openclaw-heartbeat-system) |
+|---|---|
+| Exact timing required | Timing can drift |
+| Isolated session needed | Main session context useful |
+| Different model/thinking level | Same model as main session |
+| One-shot tasks | Recurring multi-check routines |
+| "At 9am every Monday" | "Every 30-60 minutes, check stuff" |
+
+**Common mistake:** Creating 5 cron jobs for things that could be one heartbeat check. Email checking, Twitter monitoring, project health — these should all be batched into [heartbeats](/blog/openclaw-heartbeat-system), not separate crons.
+
+**Use cron for:** Nightly review, morning briefing, weekly reports, scheduled reminders, tasks that need isolation or exact timing.
+
+## Setting Up Crons in OpenClaw
+
+### Basic Syntax
+
+```
+/cron add "<schedule>" "<task description>"
+```
+
+The schedule uses standard cron syntax:
+
+| Field | Values | Example |
+|---|---|---|
+| Minute | 0-59 | 30 = at minute 30 |
+| Hour | 0-23 | 8 = 8:00 AM |
+| Day of Month | 1-31 | 15 = 15th |
+| Month | 1-12 | * = every month |
+| Day of Week | 0-7 (0,7=Sun) | 1-5 = weekdays |
+
+### Common Schedules
+
+| Schedule | Cron Expression |
+|---|---|
+| Every day at 23:00 | `0 23 * * *` |
+| Weekdays at 08:00 | `0 8 * * 1-5` |
+| Every 4 hours | `0 */4 * * *` |
+| Every Monday at 09:00 | `0 9 * * 1` |
+| First of month at 10:00 | `0 10 1 * *` |
+
+### Managing Crons
+
+```
+/cron list          — show all scheduled jobs
+/cron delete <id>   — remove a job
+/cron pause <id>    — temporarily disable
+/cron resume <id>   — re-enable
+```
+
+## Task Description Best Practices
+
+The task description is what the AI actually does. Write it like you're briefing a colleague:
+
+**❌ Too vague:**
+```
+"Do the nightly review"
+```
+
+**✅ Specific and structured:**
+```
+"Nightly review: 1) Read today's session transcript.
+2) Write structured daily note in memory/daily/YYYY-MM-DD.md
+   with sections: Summary, Decisions Made, Tasks Completed,
+   Open Items, Lessons Learned.
+3) Process memory/inbox.md — route each item to the correct
+   PARA file.
+4) Update project statuses in PROJECTS.md.
+5) Move completed projects to ARCHIVE.md.
+6) Flag anything needing David's attention."
+```
+
+Numbered steps give the AI a clear execution path. Each step is independently verifiable.
+
+## Error Handling
+
+OpenClaw tracks consecutive errors per cron job. Use the [heartbeat health check](/blog/openclaw-heartbeat-system) to monitor:
+
+```markdown
+## Heartbeat: Cron Health Check
+- List all cron jobs
+- Flag any with consecutiveErrors > 0
+- If errors found: alert David with job name + error
+- If all healthy: log silently
+```
+
+Common failure causes:
+
+| Error | Cause | Fix |
+|---|---|---|
+| Session timeout | Task too complex | Break into smaller steps |
+| File not found | Wrong path in task | Check file paths exist |
+| API error | Rate limit or auth issue | Check credentials, add retry logic |
+| Stale context | Memory files corrupted | Manual review and fix |
+
+## Advanced Patterns
+
+### Weekly Summary Report
+
+```
+Schedule: 0 9 * * 1 (Monday 9:00 AM)
+
+Task: Weekly summary: Read daily notes from the past 7 days
+(memory/daily/). Produce a weekly report covering: projects
+progressed, decisions made, metrics changes, lessons learned,
+and priorities for this week. Deliver to Telegram.
+```
+
+### Scheduled Content Publishing
+
+```
+Schedule: 0 10 * * * (daily 10:00 AM)
+
+Task: Check products/twitter/scheduled-tweets.json for any
+tweet scheduled for today. If found, post it via the posting
+script. Update the file to mark it as posted.
+```
+
+### Monthly Archive Cleanup
+
+```
+Schedule: 0 10 1 * * (1st of month, 10:00 AM)
+
+Task: Review memory/ARCHIVE.md. For items older than 3 months,
+move them to memory/archive-history.md. Keep ARCHIVE.md under
+100 lines for readability.
+```
+
+## The Memory Maintenance Stack
+
+All the pieces together:
+
+```
+Daily Rhythm:
+├── 08:00  Morning briefing (cron)
+├── 08:30  First heartbeat — email, calendar, Twitter
+├── 09:00  ... heartbeats every 30 min through the day ...
+├── 23:00  Nightly review (cron)
+└── 23:01  Quiet hours until 08:00
+
+Weekly:
+├── Monday 09:00  Weekly summary report (cron)
+└── Ongoing  Heartbeat health monitoring
+
+Monthly:
+└── 1st 10:00  Archive cleanup (cron)
+```
+
+Three cron jobs and one [heartbeat configuration](/blog/openclaw-heartbeat-system). That's the entire automation layer for a self-maintaining AI memory system.
+
+---
+
+**This is the final post in the series.** For the complete system, start with [Why Your AI Forgets Everything](/blog/why-your-ai-forgets-everything) or jump straight to the [setup guide](/blog/openclaw-memory-setup-guide).
+
+## FAQ
+
+### How many cron jobs should I have?
+
+Start with one: the nightly review. Add more only when you have a clear need. Most people over-cron and end up with expensive jobs that overlap with [heartbeat checks](/blog/openclaw-heartbeat-system). Three to five cron jobs is typical for a well-tuned setup.
+
+### Do cron jobs use the same AI model as my main session?
+
+By default, yes. But OpenClaw lets you specify a different model per cron job. Use a smaller/cheaper model for routine tasks (health checks, simple monitoring) and your primary model for complex tasks (nightly review, content generation).
+
+### What timezone do cron schedules use?
+
+Your system's configured timezone. In OpenClaw, this is typically set in your configuration. Make sure it matches your actual timezone to avoid 3am "morning briefings."
+
+### Can cron jobs interact with each other?
+
+Not directly — each runs in its own isolated session. But they can communicate through files. The nightly review writes a daily note that the morning briefing reads. The health monitor checks cron error counts that other jobs update. Files are the shared state layer.
+
+### What's the minimum interval for cron jobs?
+
+OpenClaw supports minute-level scheduling, but running cron jobs more frequently than every 15 minutes is usually wasteful. For high-frequency checks (every few minutes), use the [heartbeat system](/blog/openclaw-heartbeat-system) instead — it's designed for periodic monitoring.

@@ -1,0 +1,177 @@
+---
+title: "AGENTS.md: The Boot Sequence Your AI Actually Needs"
+description: "AGENTS.md tells your AI what to do when it wakes up. Without it, your AI has memory files but doesn't read them. Here's how to write a boot sequence that actually works."
+---
+
+> **TL;DR:** AGENTS.md is your AI's startup script. It tells the agent what files to read, in what order, before doing anything else. The critical instruction: "Read SOUL.md, USER.md, PROJECTS.md, and recent daily notes before responding." Without this, your AI has memory files but never loads them. With it, every session starts with full context.
+
+## What AGENTS.md Does
+
+Think of AGENTS.md as a boot sequence. When your computer starts up, it runs a series of steps in a specific order: load the kernel, mount the filesystem, start services. AGENTS.md does the same thing for your AI.
+
+Without a boot sequence, your AI starts generic. It has access to memory files but doesn't know to read them. It's like having a filing cabinet in the office but never opening it.
+
+AGENTS.md solves this with one simple instruction: **read your memory before you do anything.**
+
+## The Minimum Viable Boot Sequence
+
+```markdown
+# AGENTS.md
+
+## Every Session
+
+Before doing anything else:
+
+1. Read `SOUL.md` — this is who you are
+2. Read `USER.md` — this is who you're helping
+3. Read `memory/PROJECTS.md` — what's active and prioritized
+4. Read `memory/daily/YYYY-MM-DD.md` (today + yesterday)
+
+Don't ask permission. Just do it.
+```
+
+That's it. Five lines. This alone transforms your AI from an amnesiac chatbot into something that wakes up with full context.
+
+**The "Don't ask permission" line is critical.** Without it, some AIs will say "I see there are memory files. Should I read them?" Yes. Always. That's why they're there.
+
+## The Full Boot Sequence
+
+Here's a more complete version with memory maintenance, working style, and safety:
+
+```markdown
+# AGENTS.md
+
+## Every Session
+
+Before doing anything else:
+
+1. Read `SOUL.md` — this is who you are
+2. Read `USER.md` — this is who you're helping
+3. Read `memory/PROJECTS.md` — what's active
+4. Read `memory/daily/YYYY-MM-DD.md` (today + yesterday)
+5. If main session: also read `AREAS.md` and `RESOURCES.md`
+
+Don't ask permission. Just do it.
+
+## Memory — Second Brain
+
+You wake up fresh each session. These files are your continuity.
+
+### During Conversations
+- Capture decisions, facts, action items → `memory/inbox.md`
+- Don't rely on "mental notes" — write it down or it's gone
+
+### Self-Improvement Loop
+- After ANY correction: update `RESOURCES.md` § Lessons Learned
+- Write the lesson as a rule that prevents the same mistake
+- The goal: never make the same mistake twice
+
+## Working Style
+
+- Plan before building (for non-trivial tasks)
+- Verify before marking done
+- Ship, don't discuss (when the path is clear)
+
+## Safety
+
+- `trash` > `rm` (recoverable beats gone forever)
+- Ask before sending emails, tweets, or anything external
+- When in doubt, ask
+```
+
+## Why Order Matters
+
+The boot sequence order isn't arbitrary:
+
+| Order | File | Why This Order |
+|---|---|---|
+| 1 | SOUL.md | Identity shapes everything that follows |
+| 2 | USER.md | Need to know WHO before knowing WHAT |
+| 3 | PROJECTS.md | Active work determines priorities |
+| 4 | Daily notes | Recent context fills in the narrative |
+| 5 | AREAS.md | Ongoing responsibilities (less urgent) |
+| 6 | RESOURCES.md | Reference knowledge (on demand) |
+
+SOUL.md comes first because [identity affects how the AI processes everything else](/blog/soul-md-explained). Reading projects before identity means the AI interprets them through generic AI behavior. Reading identity first means it interprets projects through its specific role and personality.
+
+## The Self-Improvement Loop
+
+The most powerful section in AGENTS.md isn't the boot sequence — it's the self-improvement loop:
+
+```markdown
+After ANY correction from your human:
+1. Update `RESOURCES.md` § Lessons Learned
+2. Write the lesson as a rule
+3. The goal: never make the same mistake twice
+```
+
+This creates a feedback loop:
+
+1. AI makes a mistake
+2. Human corrects it
+3. AI documents the lesson in RESOURCES.md
+4. Future sessions read RESOURCES.md on startup
+5. Same mistake never happens again
+
+Without this loop, corrections are ephemeral — they fix the current session but not future ones. With it, [every mistake makes the AI permanently better](/blog/hidden-cost-of-ai-amnesia).
+
+## The "Write It Down" Principle
+
+AGENTS.md should embed one absolute rule: **if it's not in a file, it doesn't exist.**
+
+```markdown
+### Write It Down — No "Mental Notes"!
+- "Mental notes" don't survive session restarts. Files do.
+- When someone says "remember this" → memory/inbox.md
+- When you learn a lesson → RESOURCES.md § Lessons Learned
+- When you make a mistake → document it
+- Text > Brain 📝
+```
+
+This seems obvious but it's the single most common failure mode I see. AIs "remember" something during a conversation, the session ends, and it's gone forever. The instruction to write things down immediately — not later, not at the end — prevents this completely.
+
+## Common AGENTS.md Mistakes
+
+**Too vague:** "Read your memory files on startup." Which files? In what order? "Memory files" is ambiguous. List them explicitly.
+
+**Too controlling:** Scripting every possible action. AGENTS.md should define the boot sequence and key principles, not be a 10-page manual. Put detailed project context in [PROJECTS.md](/blog/para-method-for-ai) and operational details in AREAS.md.
+
+**Missing the safety section:** Without explicit rules about what requires permission, your AI will either ask about everything (annoying) or assume it can do anything (dangerous). Define the line clearly.
+
+**No self-improvement loop:** Without the "document every correction" instruction, your AI never learns from mistakes. This is the difference between a tool and an [improving assistant](/blog/nightly-reviews-make-ai-smarter).
+
+## AGENTS.md vs SOUL.md
+
+| AGENTS.md | [SOUL.md](/blog/soul-md-explained) |
+|---|---|
+| What the AI **does** on startup | Who the AI **is** |
+| Operational instructions | Identity and personality |
+| Boot sequence and workflows | Principles and anti-patterns |
+| Changes as your setup evolves | Stable after initial tuning |
+| Process-focused | Character-focused |
+
+Both are read every session. Both are essential. But they serve different purposes. SOUL.md without AGENTS.md gives you an AI with personality but no operational discipline. AGENTS.md without SOUL.md gives you an AI with discipline but no personality.
+
+---
+
+**Next:** [Markdown Beats Vector Databases](/blog/markdown-beats-vector-databases)
+
+**Previously:** [The Hidden Cost of AI Amnesia](/blog/hidden-cost-of-ai-amnesia)
+
+## FAQ
+
+### Do I need both AGENTS.md and SOUL.md?
+
+Yes. They serve different purposes — AGENTS.md is operational (what to do), SOUL.md is identity (who to be). Combining them into one file works but makes maintenance harder. Keep them separate for clarity.
+
+### How often should I update AGENTS.md?
+
+More often than SOUL.md, but still not frequently. Update it when you add new workflows, change the memory structure, or discover a new operational principle. The boot sequence itself should be stable.
+
+### What if my AI doesn't follow the boot sequence?
+
+Make the instructions more explicit. Instead of "read your memory files," say "Read SOUL.md first. Then read USER.md. Then read memory/PROJECTS.md." Some models need very literal instructions. Also check that the files actually exist at the paths specified — a common gotcha.
+
+### Can I have different AGENTS.md for different tasks?
+
+OpenClaw supports this through sub-agents with different configurations. Your main agent has one AGENTS.md for general operations. Spawned sub-agents can have different instructions for specific tasks. But the core boot sequence — reading memory files — should be universal.

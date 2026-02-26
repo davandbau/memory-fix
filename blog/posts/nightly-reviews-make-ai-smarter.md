@@ -1,0 +1,185 @@
+---
+title: "How Nightly Reviews Make Your AI Smarter While You Sleep"
+description: "A cron job runs at 11pm, reviews the day's conversations, updates your AI's memory files, and prepares context for tomorrow. Zero effort from you. Here's how to set it up."
+---
+
+> **TL;DR:** A nightly cron job (23:00) reviews the day's session transcript, writes a structured daily note, processes the inbox, updates project statuses, archives completed items, and flags things for tomorrow. It's the maintenance layer that keeps your AI's memory clean and current. Without it, memory files go stale within days.
+
+## Why Nightly Reviews Matter
+
+[Structured memory files](/blog/para-method-for-ai) are powerful, but they need maintenance. Without it:
+
+- PROJECTS.md gets stale (tasks completed but not updated)
+- inbox.md grows forever (items captured but never routed)
+- Daily notes don't exist (yesterday's context is lost)
+- RESOURCES.md misses lessons from the day's work
+
+You could do this maintenance manually. But you won't. Nobody does. That's why it's automated.
+
+## What the Nightly Review Does
+
+Every night at 23:00, a cron job runs through six steps:
+
+| Step | Action | Files Affected |
+|---|---|---|
+| 1 | Read day's session transcript | Input only |
+| 2 | Write/update structured daily note | `memory/daily/YYYY-MM-DD.md` |
+| 3 | Process inbox items → route to PARA files | `inbox.md` → `PROJECTS.md`, `AREAS.md`, `RESOURCES.md` |
+| 4 | Update project statuses and next actions | `PROJECTS.md` |
+| 5 | Archive completed projects | `PROJECTS.md` → `ARCHIVE.md` |
+| 6 | Flag items needing human attention | Output to human |
+
+The whole process takes 2-3 minutes and runs while you sleep.
+
+## Step 1: The Daily Note
+
+The most important output. A structured summary of the day:
+
+```markdown
+# 2026-02-26 — Wednesday
+
+## Summary
+Built blog infrastructure and wrote first 6 posts.
+Twitter engagement: 4 replies to relevant threads.
+Google Analytics added to all pages.
+
+## Decisions Made
+- Static site with JS markdown parsing (no CMS)
+- Clive as author of all blog content
+- 2 posts per week cadence
+
+## Tasks Completed
+- [x] Blog engine (engine.js)
+- [x] Blog template (blog/index.html)
+- [x] Posts 1-6 written
+- [x] GA tag added to all pages
+
+## Open Items
+- 10 more blog posts to write
+- Need to deploy blog to production
+- RSS feed not yet created
+
+## Lessons Learned
+- X API now blocks replies unless mentioned by author
+- Browser automation needed for all Twitter replies
+```
+
+Tomorrow's session reads this note and instantly knows what happened today. No re-explaining needed.
+
+## Step 2: Inbox Processing
+
+During the day, things get captured to `inbox.md` quickly:
+
+```markdown
+# Inbox
+- API reply restriction on X (403 unless mentioned)
+- @hung_attila is building multi-agent shared workspace
+- Blog needs RSS feed
+- Google Analytics ID: G-TF994CEYRZ
+```
+
+The nightly review routes each item:
+
+| Item | Destination | Reasoning |
+|---|---|---|
+| API reply restriction | RESOURCES.md § Lessons Learned | Technical lesson |
+| @hung_attila contact | RESOURCES.md § People | Reference info |
+| Blog RSS feed | PROJECTS.md § Blog Launch | Active task |
+| GA ID | RESOURCES.md § Technical Reference | Configuration detail |
+
+After processing, inbox.md is cleared. Clean slate for tomorrow.
+
+## Step 3: Project Status Updates
+
+The review checks each project in PROJECTS.md against the day's work:
+
+```markdown
+## 🔴 P1: Blog Launch
+- **Status:** In progress → In progress (6/16 posts done)
+- **Next action:** Write Week 3 posts → Write remaining 10 posts
+- **Notes:** Added GA tracking. Engine and template complete.
+```
+
+Statuses get updated, next actions get refreshed, and blockers get flagged. Tomorrow's session reads the current state, not yesterday's.
+
+## Step 4: Archiving
+
+When all tasks under a project are complete:
+
+```markdown
+# Archive
+
+## Blog Infrastructure (completed 2026-02-26)
+- Built static blog engine with markdown parsing
+- Created responsive template matching main site design
+- Added structured data for AI search (JSON-LD)
+- Outcome: Blog live at clawdtools.ai/blog
+```
+
+Moving completed projects to Archive keeps PROJECTS.md clean. Only active work appears. The AI doesn't waste attention on finished items.
+
+## Setting It Up
+
+### OpenClaw Cron Configuration
+
+```
+/cron add "0 23 * * *" "Nightly review: 1) Read today's session transcript. 2) Write structured daily note in memory/daily/YYYY-MM-DD.md with sections: Summary, Decisions Made, Tasks Completed, Open Items, Lessons Learned. 3) Process memory/inbox.md — route each item to the correct PARA file (PROJECTS.md, AREAS.md, or RESOURCES.md). 4) Update project statuses in PROJECTS.md based on today's work. 5) Move completed projects to ARCHIVE.md. 6) Flag anything needing David's attention tomorrow."
+```
+
+### Tips for Reliable Nightly Reviews
+
+- **Set timezone explicitly.** "23:00" means nothing without a timezone. Use your local time.
+- **Don't over-specify.** The AI knows how to write a daily note. Give it the structure but let it fill in the details.
+- **Monitor for failures.** OpenClaw tracks consecutive cron errors. The [heartbeat system](/blog/openclaw-heartbeat-system) can alert you if the nightly review fails.
+- **Review the output occasionally.** Spot-check daily notes weekly to make sure the quality is good.
+
+## The Flywheel Effect
+
+Here's what happens over time:
+
+**Week 1:** Daily notes capture basic summaries. Projects get tracked. Inbox gets processed.
+
+**Week 4:** A month of daily notes creates a rich narrative. The AI can look back and see project evolution, decision patterns, recurring themes.
+
+**Month 3:** RESOURCES.md has accumulated 30+ lessons learned. The AI rarely makes repeated mistakes. Project tracking is precise. The [boot sequence](/blog/agents-md-boot-sequence) loads deeply informed context.
+
+**Month 6:** The memory system is genuinely comprehensive. New sessions start with months of compounded context. The AI knows your work, your patterns, your preferences at a level that would take a human colleague months to reach.
+
+This flywheel requires zero daily effort from you. The [15-minute setup](/blog/openclaw-memory-setup-guide) and the nightly cron handle everything.
+
+## Nightly Review vs Heartbeat Maintenance
+
+| Nightly Review | [Heartbeat](/blog/openclaw-heartbeat-system) Maintenance |
+|---|---|
+| Deep, comprehensive | Light, quick pass |
+| Once per day (23:00) | Every 30-60 minutes |
+| Full transcript review | Inbox processing only |
+| Creates daily notes | Updates heartbeat state |
+| Archives completed projects | Flags stale projects |
+| Isolated cron session | Main session context |
+
+They're complementary. Heartbeats keep things tidy during the day. The nightly review does the deep organization.
+
+---
+
+**Next:** [Context Window vs Memory: They're Not the Same Thing](/blog/context-window-vs-memory)
+
+**Previously:** [OpenClaw Heartbeat System](/blog/openclaw-heartbeat-system)
+
+## FAQ
+
+### What if I miss a night?
+
+The system catches up. The next nightly review will process two days of transcripts instead of one. Daily notes for the missed day will be created retroactively. The inbox might be fuller, but it all gets processed.
+
+### Can I run the review at a different time?
+
+Yes. 23:00 works well because it runs after you've finished working but before midnight (so the daily note covers the right date). Adjust to your schedule — the key is running it once per day after your working hours end.
+
+### How much does the nightly review cost?
+
+It processes the day's transcript (varies by activity — 10K to 100K tokens) plus updates to memory files. Typical cost is $0.05-0.30 per night depending on the model and conversation volume. At $0.15/night average, that's about $4.50/month for a self-maintaining memory system.
+
+### What if the review makes a mistake?
+
+Memory files are plain [markdown](/blog/markdown-beats-vector-databases) — you can review and correct them anytime. If the nightly review consistently miscategorizes items, add routing rules to [AGENTS.md](/blog/agents-md-boot-sequence). The beauty of text files: when something's wrong, you open it and fix it.
