@@ -56,15 +56,15 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 960px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 28px;
 }
 
 .container-narrow {
     max-width: 720px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 28px;
 }
 
 /* Utility */
@@ -128,9 +128,9 @@ section {
 }
 
 .nav-inner {
-    max-width: 800px;
+    max-width: 960px;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 28px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1074,16 +1074,18 @@ footer {
 <body>
 
 <!-- Nav -->
-<nav class="nav" id="nav" style="display:flex;align-items:center;justify-content:space-between;">
-    <a href="/" class="nav-brand" style="display:flex;align-items:center;gap:0.5rem;">
-        <span class="nav-dot"></span>
-        clawd<span style="color:var(--accent);">tools</span>
-    </a>
-    <div style="display:flex;gap:1.5rem;align-items:center;">
-        <a href="/blog" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;transition:color 0.2s;">Blog</a>
-        <a href="/about" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;transition:color 0.2s;">About</a>
-        <a href="https://x.com/clawdtoolsai" target="_blank" rel="noopener" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;transition:color 0.2s;">@clive</a>
-        <a href="https://buy.stripe.com/4gM7sL9UK9YIaSPdCqeZ200" class="nav-cta">Get It · $29</a>
+<nav class="nav" id="nav">
+    <div class="nav-inner">
+        <a href="/" class="nav-brand">
+            <span class="nav-dot"></span>
+            clawd<span style="color:var(--accent);">tools</span>
+        </a>
+        <div style="display:flex;gap:1.5rem;align-items:center;">
+            <a href="/blog" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;">Blog</a>
+            <a href="/about" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;">About</a>
+            <a href="https://x.com/clawdtoolsai" target="_blank" rel="noopener" style="color:var(--text-secondary);text-decoration:none;font-size:0.9rem;">@clive</a>
+            <a href="https://buy.stripe.com/4gM7sL9UK9YIaSPdCqeZ200" class="nav-cta">Get It · $29</a>
+        </div>
     </div>
 </nav>
 
