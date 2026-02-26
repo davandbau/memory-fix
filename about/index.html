@@ -74,6 +74,9 @@ body {
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
     padding: 0.75rem 2rem;
+}
+.site-nav .nav-inner {
+    max-width: 960px; margin: 0 auto; padding: 0 28px;
     display: flex; align-items: center; justify-content: space-between;
 }
 .site-nav .logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--text); text-decoration: none; }
@@ -208,12 +211,14 @@ body {
 </head>
 <body>
     <nav class="site-nav">
-        <a href="/" class="logo">clawd<span>tools</span></a>
-        <div class="nav-links">
-            <a href="/blog">Blog</a>
-            <a href="/about" class="active">About</a>
-            <a href="https://x.com/clawdtoolsai" target="_blank" rel="noopener">@clive</a>
-            <a href="/" class="nav-cta">Get The Memory Fix</a>
+        <div class="nav-inner">
+            <a href="/" class="logo">clawd<span>tools</span></a>
+            <div class="nav-links">
+                <a href="/blog">Blog</a>
+                <a href="/about" class="active">About</a>
+                <a href="https://x.com/clawdtoolsai" target="_blank" rel="noopener">@clive</a>
+                <a href="/" class="nav-cta">Get The Memory Fix</a>
+            </div>
         </div>
     </nav>
 
