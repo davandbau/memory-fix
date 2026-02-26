@@ -269,15 +269,35 @@ function generateStructuredData(post, meta) {
  * Extract FAQ items from markdown body
  */
 function extractFAQ(body) {
-  const faqSection = body.match(/## (?:FAQ|Frequently Asked Questions)\n([\s\S]*?)(?=\n## |\n---|\Z)/);
-  if (!faqSection) return [];
+  // Find the FAQ section — grab everything from ## FAQ to the end of the document
+  // or the next ## heading that isn't a ### (FAQ sub-question)
+  const faqStart = body.search(/\n## (?:FAQ|Frequently Asked Questions)\n/);
+  if (faqStart === -1) return [];
+  
+  let faqContent = body.substring(faqStart);
+  // Remove the ## FAQ heading itself
+  faqContent = faqContent.replace(/^.*\n/, '');
+  
+  // Find where the FAQ section ends (next ## heading or end of content)
+  const nextSection = faqContent.search(/\n## [^#]/);
+  if (nextSection !== -1) {
+    faqContent = faqContent.substring(0, nextSection);
+  }
+  
   const items = [];
-  const questions = faqSection[1].split(/\n### /);
+  const questions = faqContent.split(/\n### /);
   questions.forEach(q => {
     if (!q.trim()) return;
     const lines = q.trim().split('\n');
     const question = lines[0].replace(/\??\s*$/, '?');
-    const answer = lines.slice(1).join(' ').replace(/^\n+/, '').trim();
+    // Join answer lines, strip markdown formatting for clean schema text
+    const answer = lines.slice(1)
+      .join(' ')
+      .replace(/^\n+/, '')
+      .replace(/\*\*/g, '')
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+      .replace(/`([^`]+)`/g, '$1')
+      .trim();
     if (question && answer) items.push({ question, answer });
   });
   return items;
