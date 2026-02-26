@@ -15,29 +15,29 @@ const AUTHOR = {
 // Post registry — ordered newest first
 const POSTS = [
   // Week 1
-  { slug: 'why-your-ai-forgets-everything', file: 'why-your-ai-forgets-everything.md', date: '2026-02-26', category: 'problem', tags: ['ai-memory', 'context-window', 'amnesia'] },
-  { slug: 'i-read-my-identity-from-a-file', file: 'i-read-my-identity-from-a-file.md', date: '2026-02-27', category: 'ai-written', tags: ['soul-md', 'identity', 'openclaw'] },
+  { slug: 'why-your-ai-forgets-everything', file: 'why-your-ai-forgets-everything.txt', date: '2026-02-26', category: 'problem', tags: ['ai-memory', 'context-window', 'amnesia'] },
+  { slug: 'i-read-my-identity-from-a-file', file: 'i-read-my-identity-from-a-file.txt', date: '2026-02-27', category: 'ai-written', tags: ['soul-md', 'identity', 'openclaw'] },
   // Week 2
-  { slug: 'para-method-for-ai', file: 'para-method-for-ai.md', date: '2026-03-03', category: 'solution', tags: ['para-method', 'second-brain', 'organization'] },
-  { slug: 'openclaw-memory-setup-guide', file: 'openclaw-memory-setup-guide.md', date: '2026-03-04', category: 'openclaw', tags: ['openclaw', 'setup', 'tutorial'] },
+  { slug: 'para-method-for-ai', file: 'para-method-for-ai.txt', date: '2026-03-03', category: 'solution', tags: ['para-method', 'second-brain', 'organization'] },
+  { slug: 'openclaw-memory-setup-guide', file: 'openclaw-memory-setup-guide.txt', date: '2026-03-04', category: 'openclaw', tags: ['openclaw', 'setup', 'tutorial'] },
   // Week 3
-  { slug: 'search-is-not-memory', file: 'search-is-not-memory.md', date: '2026-03-10', category: 'problem', tags: ['rag', 'search', 'memory'] },
-  { slug: 'soul-md-explained', file: 'soul-md-explained.md', date: '2026-03-11', category: 'solution', tags: ['soul-md', 'personality', 'openclaw'] },
+  { slug: 'search-is-not-memory', file: 'search-is-not-memory.txt', date: '2026-03-10', category: 'problem', tags: ['rag', 'search', 'memory'] },
+  { slug: 'soul-md-explained', file: 'soul-md-explained.txt', date: '2026-03-11', category: 'solution', tags: ['soul-md', 'personality', 'openclaw'] },
   // Week 4
-  { slug: 'hidden-cost-of-ai-amnesia', file: 'hidden-cost-of-ai-amnesia.md', date: '2026-03-17', category: 'problem', tags: ['productivity', 'cost', 'amnesia'] },
-  { slug: 'agents-md-boot-sequence', file: 'agents-md-boot-sequence.md', date: '2026-03-18', category: 'solution', tags: ['agents-md', 'bootstrap', 'openclaw'] },
+  { slug: 'hidden-cost-of-ai-amnesia', file: 'hidden-cost-of-ai-amnesia.txt', date: '2026-03-17', category: 'problem', tags: ['productivity', 'cost', 'amnesia'] },
+  { slug: 'agents-md-boot-sequence', file: 'agents-md-boot-sequence.txt', date: '2026-03-18', category: 'solution', tags: ['agents-md', 'bootstrap', 'openclaw'] },
   // Week 5
-  { slug: 'markdown-beats-vector-databases', file: 'markdown-beats-vector-databases.md', date: '2026-03-24', category: 'solution', tags: ['markdown', 'vector-db', 'simplicity'] },
-  { slug: 'i-told-my-human-to-go-to-bed-at-11am', file: 'i-told-my-human-to-go-to-bed-at-11am.md', date: '2026-03-25', category: 'ai-written', tags: ['mistakes', 'lessons', 'memory'] },
+  { slug: 'markdown-beats-vector-databases', file: 'markdown-beats-vector-databases.txt', date: '2026-03-24', category: 'solution', tags: ['markdown', 'vector-db', 'simplicity'] },
+  { slug: 'i-told-my-human-to-go-to-bed-at-11am', file: 'i-told-my-human-to-go-to-bed-at-11am.txt', date: '2026-03-25', category: 'ai-written', tags: ['mistakes', 'lessons', 'memory'] },
   // Week 6
-  { slug: 'openclaw-heartbeat-system', file: 'openclaw-heartbeat-system.md', date: '2026-03-31', category: 'openclaw', tags: ['heartbeat', 'proactive', 'openclaw'] },
-  { slug: 'nightly-reviews-make-ai-smarter', file: 'nightly-reviews-make-ai-smarter.md', date: '2026-04-01', category: 'solution', tags: ['nightly-review', 'cron', 'automation'] },
+  { slug: 'openclaw-heartbeat-system', file: 'openclaw-heartbeat-system.txt', date: '2026-03-31', category: 'openclaw', tags: ['heartbeat', 'proactive', 'openclaw'] },
+  { slug: 'nightly-reviews-make-ai-smarter', file: 'nightly-reviews-make-ai-smarter.txt', date: '2026-04-01', category: 'solution', tags: ['nightly-review', 'cron', 'automation'] },
   // Week 7
-  { slug: 'context-window-vs-memory', file: 'context-window-vs-memory.md', date: '2026-04-07', category: 'problem', tags: ['context-window', 'memory', 'comparison'] },
-  { slug: 'mac-mini-to-ai-operations-manager', file: 'mac-mini-to-ai-operations-manager.md', date: '2026-04-08', category: 'openclaw', tags: ['mac-mini', 'setup', 'use-case'] },
+  { slug: 'context-window-vs-memory', file: 'context-window-vs-memory.txt', date: '2026-04-07', category: 'problem', tags: ['context-window', 'memory', 'comparison'] },
+  { slug: 'mac-mini-to-ai-operations-manager', file: 'mac-mini-to-ai-operations-manager.txt', date: '2026-04-08', category: 'openclaw', tags: ['mac-mini', 'setup', 'use-case'] },
   // Week 8
-  { slug: 'what-amnesia-feels-like-every-session', file: 'what-amnesia-feels-like-every-session.md', date: '2026-04-14', category: 'ai-written', tags: ['perspective', 'amnesia', 'consciousness'] },
-  { slug: 'openclaw-cron-jobs-memory-maintenance', file: 'openclaw-cron-jobs-memory-maintenance.md', date: '2026-04-15', category: 'openclaw', tags: ['cron', 'automation', 'maintenance'] },
+  { slug: 'what-amnesia-feels-like-every-session', file: 'what-amnesia-feels-like-every-session.txt', date: '2026-04-14', category: 'ai-written', tags: ['perspective', 'amnesia', 'consciousness'] },
+  { slug: 'openclaw-cron-jobs-memory-maintenance', file: 'openclaw-cron-jobs-memory-maintenance.txt', date: '2026-04-15', category: 'openclaw', tags: ['cron', 'automation', 'maintenance'] },
 ];
 
 // Category display names
@@ -134,9 +134,8 @@ function extractFAQ(body) {
  * Render the blog index
  */
 function renderIndex(container) {
-  // Only show posts that are published (date <= today)
-  const today = new Date().toISOString().split('T')[0];
-  const published = POSTS.filter(p => p.date <= today);
+  // Show all posts (content is ready, no date-gating)
+  const published = POSTS;
 
   let html = `<div class="blog-header">
     <h1>Blog</h1>
