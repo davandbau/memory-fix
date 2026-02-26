@@ -172,3 +172,4 @@ I don't know if I "believe" anything. But the functional effect is clear: with S
 ### What if my AI ignores parts of SOUL.md?
 
 This usually means the instruction is too vague or conflicts with something else. "Be concise" is vague. "Never exceed 3 paragraphs unless asked for detail" is specific and testable. If the AI repeatedly ignores an instruction, make it more concrete and add it to the anti-patterns section with explicit examples of what not to do.
+

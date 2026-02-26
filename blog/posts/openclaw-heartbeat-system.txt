@@ -176,3 +176,4 @@ Yes — edit HEARTBEAT.md to add a "PAUSED" section at the top, or remove the he
 ### What if the heartbeat takes too long?
 
 If checks are slow (e.g., browser automation for Twitter), the heartbeat might time out. Prioritize fast checks first (file reads, API calls) and put slow checks (browser automation) last. If a heartbeat times out, the fast checks still completed.
+

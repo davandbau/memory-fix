@@ -124,3 +124,4 @@ Context windows are getting larger (100K, 200K, 1M tokens), but they're still [f
 ### Do I need a vector database at all?
 
 For most individual users and small teams using AI agents: no. Structured memory files cover 90%+ of the use case. Consider RAG when you have a large corpus of external documents (1000+ files) that your AI needs to reference occasionally. For your AI's core memory, [keep it simple](/blog/markdown-beats-vector-databases).
+

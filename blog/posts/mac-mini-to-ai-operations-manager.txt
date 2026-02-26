@@ -127,3 +127,4 @@ OpenClaw restarts automatically on boot. Your memory files are on disk — they 
 ### 8GB RAM is really enough?
 
 For OpenClaw, yes. The AI model runs in the cloud via API — the Mac Mini just runs the gateway, manages files, and executes tools. 8GB handles all of this comfortably. You'd only need more RAM if you're also running other heavy applications on the same machine.
+

@@ -132,3 +132,4 @@ Built-in memory features (like ChatGPT's) reduce the direct context-setting cost
 ### Is 15 minutes of setup really enough?
 
 For the [basic setup](/blog/openclaw-memory-setup-guide), yes. You create the folder structure and template files. The system then evolves organically — daily notes accumulate, projects get tracked, lessons get documented. The 15 minutes is the seed. The compound growth is automatic.
+

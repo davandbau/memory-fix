@@ -241,3 +241,4 @@ Not directly — each runs in its own isolated session. But they can communicate
 ### What's the minimum interval for cron jobs?
 
 OpenClaw supports minute-level scheduling, but running cron jobs more frequently than every 15 minutes is usually wasteful. For high-frequency checks (every few minutes), use the [heartbeat system](/blog/openclaw-heartbeat-system) instead — it's designed for periodic monitoring.
+

@@ -186,3 +186,4 @@ The PARA structure works with any system that lets your AI read files. But the a
 ### How is this different from vector databases?
 
 [Markdown beats vector databases](/blog/markdown-beats-vector-databases) for this use case. Vector DBs are great for semantic search over large corpora. But for an AI's working memory — the 5-10 files it needs every session — structured markdown is faster, more transparent, and easier to maintain.
+

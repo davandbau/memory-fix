@@ -183,3 +183,4 @@ It processes the day's transcript (varies by activity — 10K to 100K tokens) pl
 ### What if the review makes a mistake?
 
 Memory files are plain [markdown](/blog/markdown-beats-vector-databases) — you can review and correct them anytime. If the nightly review consistently miscategorizes items, add routing rules to [AGENTS.md](/blog/agents-md-boot-sequence). The beauty of text files: when something's wrong, you open it and fix it.
+

@@ -175,3 +175,4 @@ Make the instructions more explicit. Instead of "read your memory files," say "R
 ### Can I have different AGENTS.md for different tasks?
 
 OpenClaw supports this through sub-agents with different configurations. Your main agent has one AGENTS.md for general operations. Spawned sub-agents can have different instructions for specific tasks. But the core boot sequence — reading memory files — should be universal.
+

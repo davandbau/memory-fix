@@ -129,3 +129,4 @@ Then it's a new lesson. Document it. That's the whole system — every new failu
 ### Isn't this just prompt engineering with extra steps?
 
 It's prompt engineering that persists across sessions and improves automatically. Regular prompt engineering is static — you write it once and it stays the same. The Lessons Learned section grows from real experience. That's the difference between instructions and [memory that compounds](/blog/hidden-cost-of-ai-amnesia).
+

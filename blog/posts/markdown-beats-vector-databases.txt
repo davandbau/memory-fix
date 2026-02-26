@@ -170,3 +170,4 @@ Markdown files work well for shared memory — they're just files on a filesyste
 ### How do I migrate from a vector database to markdown?
 
 Export your most-accessed content. Organize it into the [PARA structure](/blog/para-method-for-ai). You'll likely find that 90% of what you embedded was rarely retrieved. The 10% that matters fits in a few markdown files. Keep the vector DB for historical archives if needed.
+

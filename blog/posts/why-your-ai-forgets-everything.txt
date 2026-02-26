@@ -118,3 +118,4 @@ The concepts work anywhere, but the implementation is easiest on platforms that 
 ### How long does it take to set up?
 
 About 15 minutes for the [basic setup](/blog/openclaw-memory-setup-guide). The memory system starts compounding from day one — by the end of the first week, your AI knows more about your work than any new hire would.
+

@@ -165,7 +165,7 @@ function renderIndex(container) {
 
   // Load titles and excerpts from markdown files
   published.forEach(post => {
-    fetch(`/blog/posts/${post.file}`)
+    fetch(`/blog/posts/${post.file}?v=2`)
       .then(r => r.text())
       .then(md => {
         const { meta } = parseFrontMatter(md);
@@ -189,7 +189,7 @@ async function renderPost(container, slug) {
   }
 
   try {
-    const res = await fetch(`/blog/posts/${post.file}`);
+    const res = await fetch(`/blog/posts/${post.file}?v=2`);
     if (!res.ok) throw new Error('Not found');
     const md = await res.text();
     const { meta, body } = parseFrontMatter(md);
@@ -272,7 +272,7 @@ async function renderPost(container, slug) {
 
     // Fetch related post titles
     related.forEach(r => {
-      fetch(`/blog/posts/${r.file}`)
+      fetch(`/blog/posts/${r.file}?v=2`)
         .then(res => res.text())
         .then(md => {
           const { meta } = parseFrontMatter(md);

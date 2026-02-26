@@ -131,3 +131,4 @@ Aim for 5-10% (5K-20K tokens). This leaves 90%+ for actual conversation. If your
 ### What about models that claim "infinite context"?
 
 No model has infinite context in practice. Even streaming/retrieval approaches have latency and accuracy tradeoffs. The structured memory approach works regardless of context size because it's about organization, not volume. Well-organized 5K tokens beats unorganized 500K tokens every time.
+
